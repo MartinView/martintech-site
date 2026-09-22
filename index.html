@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MartinTech — soluções digitais com método. Desenvolvimento de software, design de marca e consultoria técnica." />
+  <title>MartinTech — Tecnologia a serviço da decisão</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/svg/martintech-favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/png/martintech-symbol-primary-32.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/png/martintech-symbol-primary-48.png" />
+  <link rel="apple-touch-icon" href="assets/png/martintech-symbol-primary-192.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <header class="header" role="banner">
+    <div class="container header__inner">
+      <a class="brand" href="#top" aria-label="MartinTech — página inicial">
+        <svg class="brand__mark" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+          <defs>
+            <mask id="mt-mask-header">
+              <rect width="512" height="512" fill="white" />
+              <rect x="180" y="50" width="140" height="120" fill="black" />
+              <polygon points="316,142 381,199 340,210" fill="black" />
+            </mask>
+          </defs>
+          <circle cx="248.5" cy="288.0" r="161.5" fill="none" stroke="currentColor" stroke-width="145" mask="url(#mt-mask-header)" />
+        </svg>
+        <span class="brand__name">MartinTech</span>
+      </a>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="nav" class="nav" aria-label="Principal">
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <p class="eyebrow">MartinTech</p>
+        <h1 id="hero-title" class="hero__title">
+          Tecnologia a serviço <span class="accent">da decisão</span>.
+        </h1>
+        <p class="hero__lede">
+          Soluções digitais pensadas com método — do conceito ao produto funcionando, sem ruído e sem atalhos.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="mailto:contato@martintech.org?subject=Conversa%20sobre%20a%20MartinTech">Conversar</a>
+          <a class="btn btn--ghost" href="#servicos">Conhecer</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" class="section section--white" aria-labelledby="servicos-title">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <p class="eyebrow eyebrow--wine">O que fazemos</p>
+          <h2 id="servicos-title">Três frentes de atuação</h2>
+        </header>
+
+        <div class="services">
+          <article class="service">
+            <h3>Desenvolvimento de software</h3>
+            <p>
+              Aplicações web e sistemas sob medida — do back-end ao front-end. Trabalhamos com stacks modernos e foco em qualidade de entrega.
+            </p>
+          </article>
+
+          <article class="service">
+            <h3>Design de marca e interfaces</h3>
+            <p>
+              Sistemas visuais completos, do símbolo às telas. Identidade digital pensada com a mesma precisão que o código.
+            </p>
+          </article>
+
+          <article class="service">
+            <h3>Consultoria técnica</h3>
+            <p>
+              Diagnóstico, escolha de stack, prototipagem e revisão de arquitetura. Decisões técnicas com quem entende do assunto.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section section--bone" aria-labelledby="sobre-title">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <p class="eyebrow eyebrow--wine">Sobre</p>
+          <h2 id="sobre-title">Um espaço de trabalho em tecnologia e design</h2>
+        </header>
+        <div class="about">
+          <p>
+            A MartinTech reúne desenvolvimento de software, design e consultoria técnica em torno de um mesmo princípio: <strong>fazer o que importa, com método</strong>. Atendemos empresas e projetos que precisam de soluções digitais bem construídas, duráveis e compreensíveis.
+          </p>
+          <p>
+            Você fala direto com quem produz. Sem intermediários, sem tradução.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section section--charcoal section--contact" aria-labelledby="contato-title">
+      <div class="container">
+        <header class="section__head section__head--center section__head--invert">
+          <p class="eyebrow">Contato</p>
+          <h2 id="contato-title">Vamos conversar</h2>
+          <p class="section__lede">
+            Para projetos, parcerias ou orçamentos, escreva para <a class="link link--bone" href="mailto:contato@martintech.org">contato@martintech.org</a>.
+          </p>
+          <p class="section__lede">
+            Você fala direto com quem decide. Sem formulários longos, sem espera.
+          </p>
+          <p class="section__cta">
+            <a class="btn btn--primary btn--inverse" href="mailto:contato@martintech.org?subject=Conversa%20sobre%20a%20MartinTech">Enviar mensagem</a>
+          </p>
+        </header>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <p>© 2026 MartinTech</p>
+      <p class="footer__quiet">martintech.org</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

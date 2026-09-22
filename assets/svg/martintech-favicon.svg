@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="MartinTech">
+  <defs>
+    <mask id="mt-mask-favicon">
+      <rect width="512" height="512" fill="white"/>
+      <rect x="180" y="50" width="140" height="120" fill="black"/>
+      <polygon points="316,142 381,199 340,210" fill="black"/>
+    </mask>
+  </defs>
+  <circle cx="248.5" cy="288.0" r="161.5" fill="none" stroke="#552B2B" stroke-width="145" mask="url(#mt-mask-favicon)"/>
+</svg>
