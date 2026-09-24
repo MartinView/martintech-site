@@ -139,10 +139,11 @@ a {
   letter-spacing: -0.01em;
 }
 .brand__mark {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   flex: 0 0 auto;
-  color: var(--mt-burgundy);
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 .brand__name {
   color: var(--mt-charcoal);
@@ -221,14 +222,7 @@ a {
   background: var(--mt-bone);
 }
 .hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("assets/svg/martintech-pattern.svg");
-  background-size: 280px;
-  background-repeat: repeat;
-  opacity: 0.04;
-  pointer-events: none;
+  content: none;
 }
 .hero__inner {
   position: relative;
@@ -238,20 +232,6 @@ a {
 }
 .hero .eyebrow {
   color: var(--mt-burgundy);
-}
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.45rem 0.8rem;
-  background: rgba(85, 43, 43, 0.07);
-  border-radius: 100px;
-}
-.eyebrow-dot {
-  width: 0.42rem;
-  height: 0.42rem;
-  border-radius: 50%;
-  background: var(--mt-burgundy);
 }
 .hero__title {
   font-family: var(--mt-font-display);
@@ -276,11 +256,6 @@ a {
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
-}
-.hero__caption {
-  font-size: 0.82rem;
-  color: rgba(34, 35, 33, 0.55);
-  margin: 1.5rem 0 0;
 }
 
 .btn {
