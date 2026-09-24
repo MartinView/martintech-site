@@ -458,8 +458,10 @@ a {
 }
 .preview__top, .preview__bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .preview__top { padding-bottom: 2rem; border-bottom: 1px solid #e7e2db; }
-.preview__brand { color: var(--mt-burgundy); font: 700 1.15rem var(--mt-font-display); }
-.preview__brand span { color: var(--mt-charcoal); font-size: 0.9rem; }
+.preview__brand { display: inline-flex; align-items: center; gap: 0.55rem; color: var(--mt-charcoal); font: 700 0.9rem var(--mt-font-display); }
+.preview__brand img { mix-blend-mode: multiply; }
+.preview__brand span { display: grid; line-height: 1.05; }
+.preview__brand small { margin-top: 0.24rem; color: var(--mt-burgundy); font: 700 0.55rem var(--mt-font-body); letter-spacing: 0.18em; }
 .preview__pill { color: #726d68; background: #ece8e2; border-radius: 100px; padding: 0.25rem 0.65rem; font-size: 0.7rem; }
 .preview__label { color: #756e67; font-size: 0.75rem; margin: 1.5rem 0 0.1rem; }
 .preview__amount { display: block; font: 700 clamp(1.6rem, 3vw, 2.5rem) var(--mt-font-display); letter-spacing: -0.04em; }
