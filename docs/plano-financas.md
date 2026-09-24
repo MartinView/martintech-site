@@ -1,6 +1,6 @@
 # MartinTech Finanças — plano de produto e implantação
 
-Atualizado em 24/09/2026. Aplicação publicada em `financas.martintech.org`; emissão do certificado HTTPS em andamento.
+Atualizado em 24/09/2026. Aplicação publicada em `https://financas.martintech.org/` com certificado e redirecionamento HTTPS ativos.
 
 ## 1. Objetivo e limites da primeira versão
 
@@ -48,7 +48,7 @@ Entidades lógicas: usuário, espaço, membro, conta, transação, transferênci
 
 | Fase | Entregáveis verificáveis | Condição para avançar |
 | --- | --- | --- |
-| 0. Fundação | Site institucional em HTTPS; repositório privado do app, DNS do subdomínio, orçamento e pilha AWS implantados | Certificado HTTPS do subdomínio, primeiro usuário e teste de login |
+| 0. Fundação | Site institucional e aplicativo em HTTPS; repositório privado do app, DNS do subdomínio, orçamento e pilha AWS implantados | Primeiro usuário e teste de login completo |
 | 1. Prova Visor | OAuth local de leitura concluído; API de leitura implantada com autorização individual | Consentimento, renovação e isolamento reproduzidos na aplicação publicada |
 | 2. MVP | Login, espaços, contas, transações, categorias, filtros, importação assistida, dashboard, auditoria | Testes de isolamento, conciliação e recuperação aprovados |
 | 3. Planejamento | Orçamentos, recorrências, metas, alertas, caixa previsto | Cálculos reconciliados com transações |
@@ -66,8 +66,7 @@ Entidades lógicas: usuário, espaço, membro, conta, transação, transferênci
 
 ## 7. Próximas decisões
 
-1. Aguardar o certificado GitHub Pages e exigir HTTPS em `financas.martintech.org`.
-2. Convidar o primeiro administrador, cadastrar TOTP e validar consentimento e renovação do Visor.
-3. Criar identidade AWS de privilégio mínimo e pipeline controlado de deploy do backend.
-4. Homologar acesso entre espaços e usuários, importação, escritas com auditoria e os módulos empresariais.
-5. Definir política de cobrança e continuidade antes de 24/03/2027.
+1. Convidar o primeiro administrador, cadastrar TOTP e validar consentimento e renovação do Visor.
+2. Criar identidade AWS de privilégio mínimo e pipeline controlado de deploy do backend.
+3. Homologar acesso entre espaços e usuários, importação, escritas com auditoria e os módulos empresariais.
+4. Definir política de cobrança e continuidade antes de 24/03/2027.
