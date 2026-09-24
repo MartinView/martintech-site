@@ -57,9 +57,10 @@ Entidades lógicas: usuário, espaço, membro, conta, transação, transferênci
 
 ## 6. Custos e escolhas de plataforma
 
-- Em 23/09/2026 a conta AWS consultada estava em plano **Free**, ativa, com **US$ 100 de créditos restantes** e fim do plano em **24/03/2027 01:34 UTC**. O painel também exibia 0/5 atividades para conquistar até mais US$ 100; esses créditos adicionais ainda não foram ganhos. Não havia buckets S3, zonas Route 53, instâncias EC2, funções Lambda ou bancos RDS nas regiões consultadas; não havia orçamento criado. Cost Explorer respondeu que a conta não está habilitada para consulta.
+- Em 23/09/2026 a conta AWS consultada estava em plano **Free**, ativa, com **US$ 100 de créditos restantes** e fim do plano em **24/03/2027 01:34 UTC**. O painel também exibia 0/5 atividades para conquistar até mais US$ 100; esses créditos adicionais ainda não foram ganhos. Não havia buckets S3, zonas Route 53, instâncias EC2, funções Lambda ou bancos RDS nas regiões consultadas. Cost Explorer respondeu que a conta não está habilitada para consulta.
+- Foi criado o orçamento AWS `MartinTech-Financas-Dev-Monthly` de **US$ 10/mês**, com créditos excluídos do cálculo e alertas de gasto real em 50%, 80% e 100%, além de previsão em 100%, enviados a `contato@martintech.org`. Alertas são informativos e não interrompem recursos automaticamente.
 - O plano Free termina após seis meses ou consumo dos créditos; ao expirar, a conta é fechada se não for migrada para Paid. Portanto, ele serve para prova de conceito e MVP controlado, não para prometer continuidade comercial sem decisão de cobrança. Fonte: [AWS Choosing a plan](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-plans.html).
-- Começar com funções sob demanda evita a despesa fixa de EC2 e RDS. Estimar custo real com tráfego, logs, chamadas API, segredos e região antes do deploy. Configurar orçamento e alertas quando existir um destinatário confirmado.
+- Começar com funções sob demanda evita a despesa fixa de EC2 e RDS. Estimar custo real com tráfego, logs, chamadas API, segredos e região antes do deploy.
 - GitHub Enterprise Cloud oferece Pages, Actions, regras de repositório e recursos de governança; verificar a franquia e licenças efetivas da organização antes de assumir minutos ou recursos avançados. Fontes: [GitHub Enterprise Cloud](https://docs.github.com/en/enterprise-cloud@latest/admin/overview/about-github-enterprise-cloud), [GitHub Pages](https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/what-is-github-pages).
 - Databricks Free Edition fica fora da operação comercial: seus termos a destinam a uso não comercial, sem SLA, com cotas e apps que param após até 24 horas. Pode servir para aprendizado com dados sintéticos. Fonte: [Databricks Free Edition limitations](https://docs.databricks.com/aws/en/getting-started/free-edition-limitations).
 
@@ -67,6 +68,6 @@ Entidades lógicas: usuário, espaço, membro, conta, transação, transferênci
 
 1. Confirmar o uso de `financas.martintech.org` e a identidade visual herdada do site MartinTech.
 2. Validar o método de integração de servidor do Visor e a titularidade dos dados em cada espaço.
-3. Criar identidade AWS de privilégio mínimo, orçamento/alertas e repositório privado do app.
+3. Criar identidade AWS de privilégio mínimo e pipeline de deploy; orçamento/alertas e repositório privado do app já existem.
 4. Construir protótipo navegável e contrato de dados antes de provisionar infraestrutura permanente.
 5. Definir política de cobrança e continuidade antes de 24/03/2027.

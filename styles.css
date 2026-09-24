@@ -45,6 +45,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -164,6 +165,10 @@ a {
 .nav a:hover {
   color: var(--mt-burgundy);
 }
+.nav__contact {
+  font-weight: 600;
+  color: var(--mt-burgundy) !important;
+}
 .nav a::after {
   content: "";
   position: absolute;
@@ -210,7 +215,7 @@ a {
 
 /* Hero */
 .hero {
-  padding-block: clamp(5rem, 10vw, 8rem);
+  padding-block: clamp(6rem, 12vw, 10rem);
   position: relative;
   overflow: hidden;
   background: var(--mt-bone);
@@ -222,17 +227,31 @@ a {
   background-image: url("assets/svg/martintech-pattern.svg");
   background-size: 280px;
   background-repeat: repeat;
-  opacity: 0.06;
+  opacity: 0.04;
   pointer-events: none;
 }
 .hero__inner {
   position: relative;
   text-align: center;
-  max-width: 56rem;
+  max-width: 62rem;
   margin-inline: auto;
 }
 .hero .eyebrow {
   color: var(--mt-burgundy);
+}
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.8rem;
+  background: rgba(85, 43, 43, 0.07);
+  border-radius: 100px;
+}
+.eyebrow-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--mt-burgundy);
 }
 .hero__title {
   font-family: var(--mt-font-display);
@@ -247,8 +266,8 @@ a {
   color: var(--mt-burgundy);
 }
 .hero__lede {
-  font-size: 1.125rem;
-  max-width: 48ch;
+  font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+  max-width: 51ch;
   margin: 0 auto 2rem;
   color: rgba(34, 35, 33, 0.78);
 }
@@ -257,6 +276,11 @@ a {
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
+}
+.hero__caption {
+  font-size: 0.82rem;
+  color: rgba(34, 35, 33, 0.55);
+  margin: 1.5rem 0 0;
 }
 
 .btn {
@@ -346,6 +370,11 @@ a {
 .section__cta {
   margin-top: 2rem;
 }
+.section__intro {
+  color: rgba(34, 35, 33, 0.7);
+  max-width: 56ch;
+  margin: 0 auto;
+}
 
 /* Services */
 .services {
@@ -354,7 +383,7 @@ a {
   gap: 1.25rem;
 }
 .service {
-  padding: 1.75rem;
+  padding: 2rem;
   border: 1px solid rgba(34, 35, 33, 0.08);
   border-radius: var(--r-md);
   background: var(--mt-bone);
@@ -363,6 +392,14 @@ a {
 .service:hover {
   border-color: var(--mt-burgundy);
   transform: translateY(-2px);
+}
+.service::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: var(--mt-burgundy);
+  margin-bottom: 1.75rem;
 }
 .service h3 {
   font-family: var(--mt-font-display);
@@ -374,6 +411,95 @@ a {
   margin: 0;
   color: rgba(34, 35, 33, 0.75);
   font-size: 0.9375rem;
+}
+
+/* MartinTech Finanças */
+.product {
+  background: #e9e3d9;
+  overflow: hidden;
+}
+.product__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 7rem);
+}
+.product__copy h2 {
+  font: 700 clamp(2rem, 3.3vw, 3.5rem)/1.12 var(--mt-font-display);
+  letter-spacing: -0.035em;
+  margin: 0 0 1.35rem;
+  max-width: 18ch;
+}
+.product__copy > p:not(.eyebrow) {
+  max-width: 53ch;
+  color: rgba(34, 35, 33, 0.78);
+}
+.product__points {
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
+  border-top: 1px solid rgba(34, 35, 33, 0.15);
+}
+.product__points li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(34, 35, 33, 0.15);
+  font-weight: 500;
+}
+.product__points li span {
+  color: var(--mt-burgundy);
+  font: 700 0.8rem var(--mt-font-display);
+}
+.text-link {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+  color: var(--mt-burgundy);
+  font-weight: 700;
+  text-decoration-color: rgba(85, 43, 43, 0.35);
+  text-underline-offset: 5px;
+}
+.text-link:hover { text-decoration-color: currentColor; }
+.product__copy .product__disclaimer {
+  font-size: 0.78rem;
+  margin-top: 0.7rem;
+  color: rgba(34, 35, 33, 0.6);
+}
+.product__visual {
+  padding: clamp(1.2rem, 3vw, 2.5rem);
+  background: var(--mt-charcoal);
+  border-radius: 1.6rem;
+  box-shadow: 0 2rem 4rem rgba(34, 35, 33, 0.15);
+  transform: rotate(1.2deg);
+}
+.preview {
+  background: #f7f5f0;
+  border-radius: 1rem;
+  padding: clamp(1.15rem, 3vw, 2rem);
+  min-height: 360px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.14);
+}
+.preview__top, .preview__bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.preview__top { padding-bottom: 2rem; border-bottom: 1px solid #e7e2db; }
+.preview__brand { color: var(--mt-burgundy); font: 700 1.15rem var(--mt-font-display); }
+.preview__brand span { color: var(--mt-charcoal); font-size: 0.9rem; }
+.preview__pill { color: #726d68; background: #ece8e2; border-radius: 100px; padding: 0.25rem 0.65rem; font-size: 0.7rem; }
+.preview__label { color: #756e67; font-size: 0.75rem; margin: 1.5rem 0 0.1rem; }
+.preview__amount { display: block; font: 700 clamp(1.6rem, 3vw, 2.5rem) var(--mt-font-display); letter-spacing: -0.04em; }
+.preview__sub { display: block; color: #8b837b; font-size: 0.7rem; }
+.preview__bars { height: 7rem; display: flex; align-items: end; gap: 0.55rem; margin: 1.5rem 0; padding-bottom: 0.7rem; border-bottom: 1px solid #e7e2db; }
+.preview__bars i { display: block; flex: 1; border-radius: 0.25rem 0.25rem 0 0; background: #8d6763; }
+.preview__bars i:nth-child(even) { background: #c8b6a2; }
+.preview__bottom span { display: grid; color: #716b65; font-size: 0.7rem; }
+.preview__bottom strong { color: var(--mt-charcoal); font-size: 0.85rem; }
+.product__visual-note { display: block; color: #d2ccc3; text-align: center; font-size: 0.68rem; margin-top: 1rem; }
+
+@media (max-width: 840px) {
+  .product__grid { grid-template-columns: 1fr; }
+  .product__copy h2 { max-width: 24ch; }
+  .product__visual { max-width: 35rem; width: 100%; margin-inline: auto; transform: none; }
 }
 
 /* About */
