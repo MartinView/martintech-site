@@ -1,10 +1,10 @@
 # MartinTech Finanças — plano de produto e implantação
 
-Atualizado em 23/09/2026. Produto previsto em `financas.martintech.org`.
+Atualizado em 24/09/2026. Aplicação publicada em `financas.martintech.org`; emissão do certificado HTTPS em andamento.
 
 ## 1. Objetivo e limites da primeira versão
 
-Organizar finanças pessoais e corporativas em uma única aplicação, com separação rigorosa entre espaços, contas, permissões e relatórios. Na primeira etapa, o Visor será a fonte de verdade dos dados financeiros. A aplicação não deve copiar credenciais nem publicar dados financeiros no GitHub Pages. A integração automática com o Visor depende de uma prova técnica de autenticação e operações de leitura/escrita fora de uma sessão interativa MCP.
+Organizar finanças pessoais e corporativas em uma única aplicação, com separação rigorosa entre espaços, contas, permissões e relatórios. Na primeira etapa, o Visor será a fonte de verdade dos dados financeiros. A aplicação não deve copiar credenciais nem publicar dados financeiros no GitHub Pages. A prova local de OAuth do Visor foi concluída para leitura; o fluxo completo da aplicação publicada ainda exige validação com o primeiro usuário.
 
 **Critérios de sucesso da primeira entrega:** usuário autenticado; seleção de espaço pessoal ou empresarial; saldos e lançamentos conciliados com o Visor; filtros por período/conta/categoria; registro e edição com trilha de auditoria; importação assistida de CSV/OFX; orçamento e alertas; backup e exportação; uso em celular e computador. Não anunciar sincronização bancária automática antes de validar provedor, consentimento e segurança.
 
@@ -14,15 +14,15 @@ Organizar finanças pessoais e corporativas em uma única aplicação, com separ
 | --- | --- | --- |
 | Site institucional | Repositório público `MartinView/martintech-site`, GitHub Pages, `martintech.org` | Manter independente do produto financeiro |
 | Aplicação web | Repositório privado separado na organização, frontend responsivo em `financas.martintech.org` | PWA e componentes compartilhados com o site, se útil |
-| API | AWS Lambda + API Gateway HTTP API em `sa-east-1`, após prova da integração Visor | Filas para importação e rotinas longas |
-| Identidade | Serviço de autenticação apropriado à conta AWS, MFA para administradores e autorização por espaço | SSO empresarial se houver clientes e exigência comercial |
+| API | AWS Lambda + API Gateway HTTP API em `sa-east-1`, implantados | Filas para importação e rotinas longas |
+| Identidade | Amazon Cognito com convite e TOTP obrigatório; autorização por espaço na API | Papéis empresariais e SSO se houver clientes |
 | Dados financeiros | Visor como fonte de verdade; API própria atua como camada de autorização, validação e adaptação | Banco transacional próprio apenas se os requisitos excederem o Visor |
-| Dados da aplicação | Configurações, vínculos de usuários, idempotência e auditoria em armazenamento AWS de baixo custo, após modelagem | Separar armazenamento operacional de análises |
-| Segredos | AWS Secrets Manager e permissões mínimas | Rotação e segregação por ambiente |
+| Dados da aplicação | DynamoDB guarda estado OAuth e vínculo de usuários; o dado financeiro permanece no Visor | Idempotência, auditoria e configurações por espaço |
+| Segredos | Token OAuth cifrado com KMS e contexto por usuário; permissões restritas à função Lambda | Rotação, segregação por ambiente e revisão periódica |
 | Observabilidade | Logs sem dados financeiros sensíveis, métricas, alarmes e limite de custo | Tracing e painéis operacionais |
-| CI/CD | GitHub Actions com OIDC para AWS, revisão por pull request e ambientes protegidos | Deploy automático de homologação e promoção controlada |
+| CI/CD | GitHub Actions valida código e publica o frontend no Pages | OIDC para deploy AWS, revisão por pull request e ambientes protegidos |
 
-**Ponto decisivo:** o MCP do Visor já funciona para o agente em sessão interativa, mas isso não comprova que um backend Lambda possa manter uma autorização OAuth adequada para vários usuários. Antes de criar a API pública, provar fluxos de token, escopos, renovação, limites, operações de escrita, paginação e isolamento por usuário. Se não houver integração de servidor adequada, começar com importação/exportação assistida e reconsiderar a fonte de verdade.
+**Ponto decisivo:** a API já implementa OAuth individual com PKCE, estado de uso único, renovação de token e ferramentas de leitura permitidas. A prova local validou OAuth de leitura, e a API implantada respondeu ao health check e rejeitou chamadas privadas sem JWT. Ainda faltam testes reais do fluxo de ponta a ponta, isolamento entre usuários, falhas de renovação e limites do Visor. Escritas permanecem desabilitadas até haver auditoria e idempotência.
 
 ## 3. Modelo funcional
 
@@ -42,14 +42,14 @@ Entidades lógicas: usuário, espaço, membro, conta, transação, transferênci
 - Consentimento claro para cada integração; segregação de dados pessoais e empresariais; política de retenção e exportação.
 - Trilha de auditoria imutável para alterações financeiras; idempotência em criação/importação; testes de autorização entre espaços.
 - Revisão da LGPD, contratos, papéis de controlador/operador e necessidade de assessoria contábil/jurídica antes da oferta comercial.
-- Substituir o login AWS root usado apenas na descoberta inicial por identidade administrativa e de deploy com privilégio mínimo antes de criar recursos.
+- Substituir o login AWS root usado no primeiro deploy por identidade administrativa e de deploy com privilégio mínimo antes da operação recorrente.
 
 ## 5. Entrega por fases
 
 | Fase | Entregáveis verificáveis | Condição para avançar |
 | --- | --- | --- |
-| 0. Fundação | Repositório institucional na organização, domínio e HTTPS funcionando; repositório privado do app; custos e acesso AWS revisados | Site estável, proprietários e ambientes definidos |
-| 1. Prova Visor | Contrato de integração, teste de OAuth de servidor, leitura/escrita, escopos, limites, erros e reconciliação | Operações reproduzíveis, sem sessão manual do agente |
+| 0. Fundação | Site institucional em HTTPS; repositório privado do app, DNS do subdomínio, orçamento e pilha AWS implantados | Certificado HTTPS do subdomínio, primeiro usuário e teste de login |
+| 1. Prova Visor | OAuth local de leitura concluído; API de leitura implantada com autorização individual | Consentimento, renovação e isolamento reproduzidos na aplicação publicada |
 | 2. MVP | Login, espaços, contas, transações, categorias, filtros, importação assistida, dashboard, auditoria | Testes de isolamento, conciliação e recuperação aprovados |
 | 3. Planejamento | Orçamentos, recorrências, metas, alertas, caixa previsto | Cálculos reconciliados com transações |
 | 4. Empresa | Convites, papéis, centro de custo, contas a pagar/receber, relatórios gerenciais e aprovações | Permissões e regras contábeis homologadas |
@@ -66,8 +66,8 @@ Entidades lógicas: usuário, espaço, membro, conta, transação, transferênci
 
 ## 7. Próximas decisões
 
-1. Confirmar o uso de `financas.martintech.org` e a identidade visual herdada do site MartinTech.
-2. Validar o método de integração de servidor do Visor e a titularidade dos dados em cada espaço.
-3. Criar identidade AWS de privilégio mínimo e pipeline de deploy; orçamento/alertas e repositório privado do app já existem.
-4. Construir protótipo navegável e contrato de dados antes de provisionar infraestrutura permanente.
+1. Aguardar o certificado GitHub Pages e exigir HTTPS em `financas.martintech.org`.
+2. Convidar o primeiro administrador, cadastrar TOTP e validar consentimento e renovação do Visor.
+3. Criar identidade AWS de privilégio mínimo e pipeline controlado de deploy do backend.
+4. Homologar acesso entre espaços e usuários, importação, escritas com auditoria e os módulos empresariais.
 5. Definir política de cobrança e continuidade antes de 24/03/2027.
