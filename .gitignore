@@ -11,3 +11,10 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+
+# Secrets and local notes
+*.env
+*.env.*
+docs/*.txt
+docs/Secrets Manager.txt
+docs/pluggy_variaveis_segredos.txt
